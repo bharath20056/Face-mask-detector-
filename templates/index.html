@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Face Mask Detection</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    /* Reset */
+    * {
+      box-sizing: border-box;
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: linear-gradient(135deg, #141e30, #243b55);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: white;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin: 30px auto 20px auto;
+      background: linear-gradient(90deg, #00c6ff, #0072ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: glow 2s ease-in-out infinite alternate;
+      text-align: center;
+      width: 100%;
+      max-width: 1200px;
+      user-select: none;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 5px #00f, 0 0 10px #0ff; }
+      to   { text-shadow: 0 0 20px #fff, 0 0 30px #0ff; }
+    }
+
+    /* Container fills full width, aligns center vertically */
+    .container {
+      flex-grow: 1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100vw;
+      max-height: 520px;
+      padding: 0 10px;
+      gap: 10px;
+      user-select: none;
+    }
+
+    /* Side images sized to about 20% of viewport width, full height */
+    .side-image {
+      width: 20vw;
+      max-width: 280px;
+      height: 480px;
+      object-fit: contain;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
+      background: rgba(255, 255, 255, 0.05);
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
+    }
+    .side-image:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.9);
+      cursor: pointer;
+    }
+
+    /* Video container sized about 50% viewport width */
+    .video-container {
+      width: 50vw;
+      max-width: 640px;
+      height: 480px;
+      background: rgba(255,255,255,0.05);
+      padding: 15px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+      border: 1px solid rgba(255,255,255,0.1);
+      flex-shrink: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #liveVideo {
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,255,255,0.3);
+      display: block;
+      object-fit: cover;
+    }
+
+    /* Sticky footer */
+    footer {
+      width: 100%;
+      text-align: center;
+      padding: 12px 0;
+      background-color: rgba(0, 0, 0, 0.4);
+      color: rgba(255,255,255,0.85);
+      font-size: 0.9rem;
+      user-select: none;
+      position: sticky;
+      bottom: 0;
+      z-index: 10;
+      box-shadow: inset 0 1px 3px rgba(255,255,255,0.2);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .container {
+        flex-direction: column;
+        max-height: none;
+        padding: 0 20px;
+      }
+      .side-image {
+        width: 60vw;
+        height: auto;
+        max-width: none;
+        margin-bottom: 15px;
+      }
+      .video-container {
+        width: 90vw;
+        height: auto;
+        max-width: none;
+        margin-bottom: 20px;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Face Mask Detection</h1>
+
+  <div class="container">
+    
+
+    <div class="video-container">
+      <img id="liveVideo" src="{{ url_for('video') }}" alt="Live Video Feed" />
+    </div>
+  </div>
+
+  <footer>
+    Developed by <strong>M ABHINAV</strong>, <strong>T BHANU VARAPRASAD</strong>, <strong>B BHARATH KUMAR</strong> 
+  </footer>
+
+</body>
+</html>
